@@ -1,0 +1,35 @@
+{
+  "name": "gg-sports-nature",
+  "version": "1.0.0",
+  "description": "Tableau de bord premium pour préparer ses sorties nature : météo temps réel, astronomie, marées, houle, rivières, spots et budget.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "package": "node scripts/package.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ggtchik/GG-Sports-Nature.git"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "suncalc": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.22",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/suncalc": "^1.9.2",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vite-plugin-singlefile": "^2.3.4"
+  },
+  "private": true,
+  "type": "module"
+}
