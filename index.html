@@ -7,6 +7,66 @@
     <style>
       html { background: #f5efe4; }
       html[data-theme='dark'] { background: #14110e; }
+      .boot {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        color: #5c5147;
+      }
+      .boot__mark {
+        border-radius: 16px;
+        box-shadow: 0 18px 40px -22px rgba(30, 40, 30, 0.9);
+        animation: boot-rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+      .boot__name {
+        margin: 4px 0 0;
+        font-family: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+        font-size: 20px;
+        color: #231d16;
+      }
+      .boot__hint {
+        margin: 0;
+        font-size: 9.5px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8a7c6d;
+      }
+      .boot__bar {
+        display: block;
+        width: 128px;
+        height: 3px;
+        margin-top: 10px;
+        border-radius: 99px;
+        background: rgba(48, 36, 22, 0.1);
+        overflow: hidden;
+      }
+      .boot__bar span {
+        display: block;
+        width: 42%;
+        height: 100%;
+        border-radius: 99px;
+        background: linear-gradient(90deg, #e8b464, #b85c3c);
+        animation: boot-slide 1.2s ease-in-out infinite;
+      }
+      html[data-theme='dark'] .boot { color: #c7b9a8; }
+      html[data-theme='dark'] .boot__name { color: #f4ece0; }
+      html[data-theme='dark'] .boot__hint { color: #948574; }
+      html[data-theme='dark'] .boot__bar { background: rgba(244, 236, 224, 0.12); }
+      @keyframes boot-slide {
+        0% { transform: translateX(-110%); }
+        100% { transform: translateX(340%); }
+      }
+      @keyframes boot-rise {
+        from { opacity: 0; transform: translateY(10px) scale(0.96); }
+        to { opacity: 1; transform: none; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .boot__mark, .boot__bar span { animation: none; }
+      }
     </style>
     <script>
       // Applique le thème avant le premier rendu (évite tout flash clair/sombre).
@@ -37,7 +97,25 @@
     />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="boot" role="status" aria-live="polite">
+        <svg class="boot__mark" width="58" height="58" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="boot-bg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3c4c3c" />
+              <stop offset="100%" stop-color="#22302a" />
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="18" fill="url(#boot-bg)" />
+          <circle cx="44" cy="20" r="7.5" fill="#e9b76a" />
+          <path d="M8 48 22 27l8.5 12.5L37 32l19 22H8Z" fill="#f5efe4" opacity="0.95" />
+          <path d="M8 48 22 27l5 7.4L20 48H8Z" fill="#cfd9c2" opacity="0.75" />
+        </svg>
+        <p class="boot__name">GG Sports Nature</p>
+        <p class="boot__hint">Météo · marées · rivières · spots</p>
+        <span class="boot__bar"><span></span></span>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
