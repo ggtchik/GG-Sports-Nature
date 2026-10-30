@@ -86,7 +86,7 @@ export function Footer({ position, demoMode, onToggleDemo, onOpenPosition }: Foo
           <button type="button" className="footer__action" onClick={onOpenPosition}>
             <SlidersHorizontal size={13} /> Modifier ma position
           </button>
-          <a className="footer__action" href="../archive.zip" download>
+          <a className="footer__action" href="./archive.zip" download>
             <Download size={13} /> Télécharger l’application (.zip)
           </a>
           <a
